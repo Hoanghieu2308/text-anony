@@ -1,5 +1,5 @@
 var originTextArea = $('#origin-text');
-var transType = "txt2icn";
+var transType = "txt2anony";
 var resultTextArea = $('#converted-text');
 var transBtn = document.querySelector('#transTypeBtn');
 $(document).on("click","#emoji-picker",function(e){
@@ -31,7 +31,7 @@ $('.intercom-composer-popover-input').on('input', function() {
 
 function doConversion() {
   var originText = originTextArea.val();
-  if (transType == 'txt2icn'){
+  if (transType == 'txt2anony'){
     originText = originText.toLowerCase();
       originText = originText.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ|a/g, "1");
       originText = originText.replace(/b/g, "2");
@@ -65,7 +65,7 @@ function doConversion() {
         originText = originText.replace(/\u0300|\u0301|\u0303|\u0309|\u0323/g, ""); // Huyền sắc hỏi ngã nặng
         originText = originText.replace(/\u02C6|\u0306|\u031B/g, ""); // Â, Ê, Ă, Ơ, Ư       
 }
-else if (transType == 'icn2txt'){
+else if (transType == 'anony2txt'){
     originText = originText.toLowerCase();
       originText = originText.replace(/1/g, "a");
       originText = originText.replace(/2/g, "b");
@@ -99,11 +99,11 @@ else if (transType == 'icn2txt'){
 }
 
 transBtn.addEventListener('click', function(event) {
-  if (transType == 'icn2txt'){
-    transType = 'txt2icn';
+  if (transType == 'anony2txt'){
+    transType = 'txt2anony';
     document.getElementById('typeConvert').innerHTML = 'Nhập đoạn văn bản cần chuyển đổi: (Loại dịch: Tin nhắn ---> Mã hoá)';
-  } else if (transType == 'txt2icn'){
-    transType = 'icn2txt'
+  } else if (transType == 'txt2anony'){
+    transType = 'anony2txt'
     document.getElementById('typeConvert').innerHTML = 'Nhập đoạn văn bản cần chuyển đổi: (Loại dịch: Mã hoá ---> tin nhắn)';
   }
   doConversion();
